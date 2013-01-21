@@ -19,9 +19,11 @@ Author: Nahuel Foronda, Principal Architect
 */
 package com.asfusion.mate.core
 {
+
 	import com.asfusion.mate.actionLists.IScope;
 	import com.asfusion.mate.utils.debug.*;
-	use namespace com.asfusion.mate.core.mate;
+
+	use namespace mate;
 	
 	/**
 	 * MethodCaller has the ability to call a method on any object. 

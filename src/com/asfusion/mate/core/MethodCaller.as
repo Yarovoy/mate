@@ -79,29 +79,13 @@ package com.asfusion.mate.core
 			}
 			else
 			{
-				try
+				if(!parameters)
 				{
-					if(!parameters)
-					{
-					
-						returnValue = instance[method]();
-					}
-					else
-					{
-						returnValue = (instance[method] as Function).apply(instance, parameters);
-					}
+					returnValue = instance[method]();
 				}
-				catch(error:ArgumentError)
+				else
 				{
-					logInfo =  new LogInfo( scope, instance,  error, method, parameters);
-					logger.error(LogTypes.ARGUMENT_ERROR,logInfo);
-					throw error;
-				}
-				catch(error:TypeError)
-				{
-					logInfo =  new LogInfo( scope, instance, error, method, parameters);
-					logger.error(LogTypes.TYPE_ERROR, logInfo);
-                    throw error;
+					returnValue = (instance[method] as Function).apply(instance, parameters);
 				}
 			}
 			return returnValue;

@@ -49,7 +49,6 @@ package com.asfusion.mate.core
 		public function call(scope:IScope,instance:*, method:String,  args:*, parseArguments:Boolean = true):*
 		{
 			var returnValue:*;
-			var reTry:Boolean;
 			var logInfo:LogInfo;
 			var parameters:Array;
 			
@@ -94,17 +93,13 @@ package com.asfusion.mate.core
 				{
 					logInfo =  new LogInfo( scope, instance,  error, method, parameters);
 					logger.error(LogTypes.ARGUMENT_ERROR,logInfo);
-					reTry = !logInfo.foundProblem;
+					throw error;
 				}
 				catch(error:TypeError)
 				{
 					logInfo =  new LogInfo( scope, instance, error, method, parameters);
 					logger.error(LogTypes.TYPE_ERROR, logInfo);
-					reTry = !logInfo.foundProblem;
-				}
-				if(reTry)
-				{
-					returnValue = (!parameters)?instance[method]():(instance[method] as Function).apply(instance, parameters);
+                    throw error;
 				}
 			}
 			return returnValue;

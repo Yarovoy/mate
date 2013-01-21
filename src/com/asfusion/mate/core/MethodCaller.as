@@ -109,7 +109,7 @@ package com.asfusion.mate.core
 		*                                     Private Methods
 		-------------------------------------------------------------------------------------------------------------*/
 		/*-.........................................getArguments..........................................*/
-		private function getArguments(scope:IScope, parameters:*):Array
+		private static function getArguments(scope:IScope, parameters:*):Array
 		{
 			return (new SmartArguments()).getRealArguments(scope, parameters);
 		}
